@@ -103,6 +103,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Red2: {fileID: 5386233417359800893, guid: 33071f97eb55dc442bc0d9b0d26a054a, type: 3}
   Black2: {fileID: 7270825527093841668, guid: df7db9b71e3586c4c8635199ecc098ae, type: 3}
+  Red3: {fileID: 5386233417359800893, guid: 15617f09a13912647a917d9d07f25f46, type: 3}
+  Black3: {fileID: 7270825527093841668, guid: 0c938280d125f1645aff052c001a895c, type: 3}
+  Red4: {fileID: 5386233417359800893, guid: c9d83f1e5a155124ab23eda16c0d7d06, type: 3}
+  Black4: {fileID: 7270825527093841668, guid: 4a37bfb2dbcb7c142ba32c03c3543c23, type: 3}
+  Red5: {fileID: 5386233417359800893, guid: c058bac5ebc54fe4a9adc8b0182b81a2, type: 3}
+  Black5: {fileID: 7270825527093841668, guid: 2c1e8440aba6c0b4a8082935f1680799, type: 3}
+  Red6: {fileID: 5386233417359800893, guid: 1069c989302f8cb48a0ac0109eba761a, type: 3}
+  Black6: {fileID: 7270825527093841668, guid: 9863ed0bb8a113b40afce16935dae11e, type: 3}
+  Red7: {fileID: 5386233417359800893, guid: 14d48b5c1d83c2946b62526bb91270db, type: 3}
+  Black7: {fileID: 7270825527093841668, guid: 91818dbe463fab24cb09f83fb759210c, type: 3}
+  Red8: {fileID: 5386233417359800893, guid: d0271e812ccee894db48ad600c74dbcd, type: 3}
+  Black8: {fileID: 7270825527093841668, guid: 3cb11e7607c768d4e8aaf7cab45bf78a, type: 3}
+  Red9: {fileID: 5386233417359800893, guid: 4bd909d6f6ec79a4baab014dba6fff88, type: 3}
+  Black9: {fileID: 7270825527093841668, guid: dac266847e740eb4b868483f8ee588ab, type: 3}
+  Red10: {fileID: 5386233417359800893, guid: 65cc72fb724bc384080f90a796332da6, type: 3}
+  Black10: {fileID: 7270825527093841668, guid: 9344146965898a44e854b77fd42fd8d4, type: 3}
   RedJoker: {fileID: 1061736928336611458, guid: 01147dd4f5f1e4e4693e2e309a2667ee, type: 3}
 --- !u!61 &1332756018866391580
 BoxCollider2D:
