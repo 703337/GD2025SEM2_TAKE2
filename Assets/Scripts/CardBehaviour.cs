@@ -8,12 +8,16 @@ public class DragAround : MonoBehaviour
     // Initial Variable Values
     bool isDragging;
     bool isHovered;
+    bool isFlipped;
     Vector3 mousePositionOffset;
+
+    // Initial References
+    [SerializeField] GameObject cardBack;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        GetComponent<Rigidbody2D>().AddForce(Vector2.right);
     }
 
     // Update is called once per frame
@@ -34,6 +38,11 @@ public class DragAround : MonoBehaviour
         {
             isDragging = false;
         }
+        // Flip card over
+        if (Input.GetMouseButtonDown(1) && isHovered)
+        {
+            FlipCard();
+        }
     }
 
     // Function triggered when mouse enters trigger volume
@@ -48,6 +57,7 @@ public class DragAround : MonoBehaviour
         isHovered = false;
     }
 
+    // Get the mouse position in relation to the object within the world
     public Vector3 GetMouseWorldPosition()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -62,5 +72,26 @@ public class DragAround : MonoBehaviour
     private void DragCard()
     {
         transform.position = GetMouseWorldPosition() + mousePositionOffset;
+    }
+
+    // Function to flip card over
+    private void FlipCard()
+    {
+        switch (isFlipped)
+        {
+            case false:
+                isFlipped = true;
+                cardBack.GetComponent<SpriteRenderer>().enabled = false;
+                break;
+            case true:
+                isFlipped = false;
+                cardBack.GetComponent<SpriteRenderer>().enabled = true;
+                break;
+        }
+    }
+
+    public void DestoryCard()
+    {
+        Destroy(gameObject);
     }
 }

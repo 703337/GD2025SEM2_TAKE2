@@ -7,6 +7,7 @@ public class DrawCard : MonoBehaviour
     bool isHovered;
 
     // Initial References
+    [SerializeField] GameManager gameManager;
     [SerializeField] GameObject Red2;
     [SerializeField] GameObject Black2;
     [SerializeField] GameObject Red3;
@@ -119,6 +120,7 @@ public class DrawCard : MonoBehaviour
                 pickedCard = RedJoker;
                 break;
         }
-        Instantiate<GameObject>(pickedCard, transform);
+        GameObject spawnCard = Instantiate<GameObject>(pickedCard, transform);
+        gameManager.AddCardToList(spawnCard);
     }
 }
