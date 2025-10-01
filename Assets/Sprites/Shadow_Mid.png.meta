@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3acdae2fdb0964a4687bbf0d3a486917
+guid: 35fc881536869784082834bc8073aac0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4678011439081511601
-    second: CardBlack7_0
+      213: -5135099584495449377
+    second: Shadow_Mid 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CardBlack7_0
+      name: Shadow_Mid 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 768
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1badaa16e92abe040800000000000000
-      internalID: 4678011439081511601
+      spriteID: fda84e382267cb8b0800000000000000
+      internalID: -5135099584495449377
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CardBlack7_0: 4678011439081511601
+      Shadow_Mid 1_0: -5135099584495449377
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
