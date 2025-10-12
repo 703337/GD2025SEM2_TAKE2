@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78b6406cd09f81248ae477bf9c06dc1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardValue: 9
   cardBack: {fileID: 4846096513434624325}
 --- !u!50 &-8220355369495163254
 Rigidbody2D:

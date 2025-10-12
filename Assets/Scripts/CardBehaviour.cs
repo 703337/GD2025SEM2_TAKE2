@@ -3,13 +3,24 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DragAround : MonoBehaviour
+public class CardBehaviour : MonoBehaviour
 {
     // Initial Variable Values
     bool isDragging;
     bool isHovered;
-    bool isFlipped;
+    [SerializeField] public bool isFlipped;
+    public bool flippable;
+    public bool justFlipped;
     Vector3 mousePositionOffset;
+    [SerializeField] public int cardValue;
+    public int GetCardValue()
+    {
+        if (isFlipped == false)
+        {
+            return 0;
+        }
+        return cardValue;
+    }
 
     // Initial References
     [SerializeField] GameObject cardBack;
@@ -39,7 +50,7 @@ public class DragAround : MonoBehaviour
             isDragging = false;
         }
         // Flip card over
-        if (Input.GetMouseButtonDown(1) && isHovered)
+        if (Input.GetMouseButtonDown(1) && isHovered && flippable)
         {
             FlipCard();
         }
@@ -82,10 +93,12 @@ public class DragAround : MonoBehaviour
             case false:
                 isFlipped = true;
                 cardBack.GetComponent<SpriteRenderer>().enabled = false;
+                justFlipped = true;
                 break;
             case true:
                 isFlipped = false;
                 cardBack.GetComponent<SpriteRenderer>().enabled = true;
+                justFlipped = true;
                 break;
         }
     }
