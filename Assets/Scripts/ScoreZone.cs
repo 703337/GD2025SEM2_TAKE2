@@ -1,13 +1,23 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ScoreZone : MonoBehaviour
 {
     // Initial Variable Values
     int score;
+    int scoreBanked;
+    int lives = 3;
 
     // Initial References
+    [SerializeField] GameManager gameManager;
+    [SerializeField] Button ScoreBanker;
+    [SerializeField] TextMeshProUGUI LifeCounter;
+    [SerializeField] TextMeshProUGUI BankedScoreCounter;
     [SerializeField] TextMeshProUGUI ScoreCounter;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,10 +49,20 @@ public class ScoreZone : MonoBehaviour
         else if (score > 21)
         {
             ScoreCounter.color = Color.red;
+            StartCoroutine(LoseLife());
         }
         else
         {
             ScoreCounter.color = Color.white;
+        }
+        // Enable score banking above 16
+        if (score >= 16)
+        {
+            ScoreBanker.interactable = true;
+        }
+        else
+        {
+            ScoreBanker.interactable = false;
         }
     }
 
@@ -70,10 +90,20 @@ public class ScoreZone : MonoBehaviour
         else if (score > 21)
         {
             ScoreCounter.color = Color.red;
+            StartCoroutine(LoseLife());
         }
         else
         {
             ScoreCounter.color = Color.white;
+        }
+        // Enable score banking above 16
+        if (score >= 16)
+        {
+            ScoreBanker.interactable = true;
+        }
+        else
+        {
+            ScoreBanker.interactable = false;
         }
     }
 
@@ -94,10 +124,54 @@ public class ScoreZone : MonoBehaviour
         else if (score > 21)
         {
             ScoreCounter.color = Color.red;
+            StartCoroutine(LoseLife());
         }
         else
         {
             ScoreCounter.color = Color.white;
+        }
+        // Enable score banking above 16
+        if (score >= 16)
+        {
+            ScoreBanker.interactable = true;
+        }
+        else
+        {
+            ScoreBanker.interactable = false;
+        }
+    }
+
+    // Function to bank score
+    public void BankScore()
+    {
+        // Bank and display score
+        scoreBanked += score;
+        BankedScoreCounter.text = "Banked Score: " + scoreBanked;
+        // Reset score and clear cards
+        ScoreBanker.interactable = false;
+        gameManager.DestroyAllCards();
+        score = 0;
+        ScoreCounter.text = "Score: " + score;
+        ScoreCounter.color = Color.white;
+    }
+
+    // Function to lose a life and clear cards
+    IEnumerator LoseLife()
+    {
+        // Subtract a life
+        lives -= 1;
+        LifeCounter.text = "Lives: " + lives;
+        // Wait on a timer before resetting score and clearing cards
+        ScoreBanker.interactable = false;
+        yield return new WaitForSecondsRealtime(1);
+        gameManager.DestroyAllCards();
+        score = 0;
+        ScoreCounter.text = "Score: " + score;
+        ScoreCounter.color = Color.white;
+        // End the game if all lives are lost
+        if (lives == 0)
+        {
+            SceneManager.LoadScene("End");
         }
     }
 }

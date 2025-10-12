@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 750614611328594863}
   - component: {fileID: 8739025833812453635}
-  - component: {fileID: 1490545014667447290}
   - component: {fileID: 7742265681449087873}
   - component: {fileID: 2084663085116607035}
   m_Layer: 0
@@ -91,19 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1490545014667447290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061736928336611458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b37fbfc8c4e25a84185302cd9cae5b01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardBack: {fileID: 1430786048644850133}
 --- !u!114 &7742265681449087873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78b6406cd09f81248ae477bf9c06dc1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFlipped: 0
+  flippable: 0
+  justFlipped: 0
+  cardValue: 0
+  cardBack: {fileID: 0}
 --- !u!61 &2084663085116607035
 BoxCollider2D:
   m_ObjectHideFlags: 0
