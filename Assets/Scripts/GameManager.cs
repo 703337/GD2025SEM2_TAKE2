@@ -46,6 +46,10 @@ public class GameManager : MonoBehaviour
                     gameplayInstructions.enabled = true;
                 }
                 break;
+            // Go back to scene "Start" - [Any Scene]
+            case "Restart Game":
+                SceneManager.LoadScene("Start");
+                break;
             // Close the game - [Any Scene]
             case "Quit Game":
                 Application.Quit();

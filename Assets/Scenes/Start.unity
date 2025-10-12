@@ -1390,7 +1390,8 @@ MonoBehaviour:
     Drag cards into
     the shaded area (Score Zone) to flip them and add to your score. Try to get as
     close to 21 as you can, and don''t go over! You only get to go over three times
-    before it''s GAME OVER.'
+    before it''s GAME OVER. When you''re at at least 16 score you can bank it to
+    add to your total score. Try to bank as much as you can!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
