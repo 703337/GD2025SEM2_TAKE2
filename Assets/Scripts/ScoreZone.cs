@@ -12,6 +12,7 @@ public class ScoreZone : MonoBehaviour
     int score;
     int scoreBanked;
     int lives = 3;
+    bool pauseStayFunc;
 
     // Initial References
     [SerializeField] GameManager gameManager;
@@ -50,6 +51,7 @@ public class ScoreZone : MonoBehaviour
         {
             ScoreCounter.color = Color.red;
             StartCoroutine(LoseLife());
+            pauseStayFunc = true;
         }
         else
         {
@@ -81,6 +83,10 @@ public class ScoreZone : MonoBehaviour
             other.GetComponentInParent<CardBehaviour>().justFlipped = false;
         }
         // Display score text
+        if (pauseStayFunc == true)
+        {
+            return;
+        }
         ScoreCounter.text = "Score: " + score;
         // Alter score text colour
         if (score == 21)
@@ -91,6 +97,7 @@ public class ScoreZone : MonoBehaviour
         {
             ScoreCounter.color = Color.red;
             StartCoroutine(LoseLife());
+            pauseStayFunc = true;
         }
         else
         {
@@ -125,6 +132,7 @@ public class ScoreZone : MonoBehaviour
         {
             ScoreCounter.color = Color.red;
             StartCoroutine(LoseLife());
+            pauseStayFunc = true;
         }
         else
         {
@@ -168,6 +176,7 @@ public class ScoreZone : MonoBehaviour
         score = 0;
         ScoreCounter.text = "Score: " + score;
         ScoreCounter.color = Color.white;
+        pauseStayFunc = false;
         // End the game if all lives are lost
         if (lives == 0)
         {
