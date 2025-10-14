@@ -180,7 +180,9 @@ public class ScoreZone : MonoBehaviour
         // End the game if all lives are lost
         if (lives == 0)
         {
-            SceneManager.LoadScene("End");
+            SceneManager.LoadScene("End"); // Below this line is the beginnings of an attempt to convey the final score to the exit screen.
+            // DontDestroyOnLoad(this.gameObject);
+            // this.gameObject.GetComponent<Renderer>().enabled = false;
         }
     }
 }
