@@ -4,13 +4,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class ScoreZone : MonoBehaviour
 {
     // Initial Variable Values
     int score;
-    int scoreBanked;
+    public int scoreBanked;
     int lives = 3;
     bool pauseStayFunc;
 
@@ -180,9 +181,10 @@ public class ScoreZone : MonoBehaviour
         // End the game if all lives are lost
         if (lives == 0)
         {
-            SceneManager.LoadScene("End"); // Below this line is the beginnings of an attempt to convey the final score to the exit screen.
-            // DontDestroyOnLoad(this.gameObject);
-            // this.gameObject.GetComponent<Renderer>().enabled = false;
+            SceneManager.LoadScene("End");
+            DontDestroyOnLoad(gameObject);
+            gameObject.GetComponentInChildren<TilemapRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }
