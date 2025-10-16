@@ -42,8 +42,10 @@ public class ScoreZone : MonoBehaviour
 
     public void CheckCards()
     {
+        // Refresh score to 0 before getting total cards value
         score = 0;
 
+        // Get totals cards value
         foreach(CardBehaviour card in cardLists)
         {
             if(card.isFlipped == true)
@@ -52,7 +54,33 @@ public class ScoreZone : MonoBehaviour
             }
         }
 
+        // Display score text
         ScoreCounter.text = "Score: " + score;
+
+        // Alter score text colour
+        if (score == 21)
+        {
+            ScoreCounter.color = Color.green;
+        }
+        else if (score > 21)
+        {
+            ScoreCounter.color = Color.red;
+            StartCoroutine(LoseLife());
+            pauseStayFunc = true;
+        }
+        else
+        {
+            ScoreCounter.color = Color.white;
+        }
+        // Enable score banking above 16
+        if (score >= 16)
+        {
+            ScoreBanker.interactable = true;
+        }
+        else
+        {
+            ScoreBanker.interactable = false;
+        }
     }
 
     // Function to add card values to total score
@@ -65,87 +93,6 @@ public class ScoreZone : MonoBehaviour
             cardLists.Add(card);
             CheckCards();
         }
-
-        return;
-
-        // Allow cards to flip
-        other.GetComponentInParent<CardBehaviour>().flippable = true;
-        // Add to score
-        score += other.GetComponentInParent<CardBehaviour>().GetCardValue();
-        // Display score text
-        ScoreCounter.text = "Score: " + score;
-        // Alter score text colour
-        if (score == 21)
-        {
-            ScoreCounter.color = Color.green;
-        }
-        else if (score > 21)
-        {
-            ScoreCounter.color = Color.red;
-            StartCoroutine(LoseLife());
-            pauseStayFunc = true;
-        }
-        else
-        {
-            ScoreCounter.color = Color.white;
-        }
-        // Enable score banking above 16
-        if (score >= 16)
-        {
-            ScoreBanker.interactable = true;
-        }
-        else
-        {
-            ScoreBanker.interactable = false;
-        }
-    }
-
-    // Function to alter score based on card flip state < ------------ DO THIS PROPERLY ------------ <
-    void OnTriggerStay2D(Collider2D other)
-    {
-        return;
-
-        // Alter score
-        if (other.GetComponentInParent<CardBehaviour>().isFlipped == false && other.GetComponentInParent<CardBehaviour>().justFlipped == true)
-        {
-            score -= other.GetComponentInParent<CardBehaviour>().cardValue;
-            other.GetComponentInParent<CardBehaviour>().justFlipped = false;
-        }
-        else if (other.GetComponentInParent<CardBehaviour>().isFlipped == true && other.GetComponentInParent<CardBehaviour>().justFlipped == true)
-        {
-            score += other.GetComponentInParent<CardBehaviour>().cardValue;
-            other.GetComponentInParent<CardBehaviour>().justFlipped = false;
-        }
-        // Display score text
-        if (pauseStayFunc == true)
-        {
-            return;
-        }
-        ScoreCounter.text = "Score: " + score;
-        // Alter score text colour
-        if (score == 21)
-        {
-            ScoreCounter.color = Color.green;
-        }
-        else if (score > 21)
-        {
-            ScoreCounter.color = Color.red;
-            StartCoroutine(LoseLife());
-            pauseStayFunc = true;
-        }
-        else
-        {
-            ScoreCounter.color = Color.white;
-        }
-        // Enable score banking above 16
-        if (score >= 16)
-        {
-            ScoreBanker.interactable = true;
-        }
-        else
-        {
-            ScoreBanker.interactable = false;
-        }
     }
 
     // Function to add card values to total score
@@ -157,39 +104,6 @@ public class ScoreZone : MonoBehaviour
             card.ZoneExited();
             cardLists.Remove(card);
             CheckCards();
-        }
-
-        return;
-
-        // Disallow cards to flip
-        other.GetComponentInParent<CardBehaviour>().flippable = false;
-        // Subtract from score
-        score -= other.GetComponentInParent<CardBehaviour>().GetCardValue();
-        // Display score text
-        ScoreCounter.text = "Score: " + score;
-        // Alter score text colour
-        if (score == 21)
-        {
-            ScoreCounter.color = Color.green;
-        }
-        else if (score > 21)
-        {
-            ScoreCounter.color = Color.red;
-            StartCoroutine(LoseLife());
-            pauseStayFunc = true;
-        }
-        else
-        {
-            ScoreCounter.color = Color.white;
-        }
-        // Enable score banking above 16
-        if (score >= 16)
-        {
-            ScoreBanker.interactable = true;
-        }
-        else
-        {
-            ScoreBanker.interactable = false;
         }
     }
 
