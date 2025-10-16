@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -22,6 +24,10 @@ public class ScoreZone : MonoBehaviour
     [SerializeField] TextMeshProUGUI BankedScoreCounter;
     [SerializeField] TextMeshProUGUI ScoreCounter;
 
+    public List<CardBehaviour> cardLists = new List<CardBehaviour>();
+
+    public int testAmount;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,9 +40,34 @@ public class ScoreZone : MonoBehaviour
 
     }
 
+    public void CheckCards()
+    {
+        score = 0;
+
+        foreach(CardBehaviour card in cardLists)
+        {
+            if(card.isFlipped == true)
+            {
+                score += card.cardValue;
+            }
+        }
+
+        ScoreCounter.text = "Score: " + score;
+    }
+
     // Function to add card values to total score
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.GetComponent<CardBehaviour>() != null)
+        {
+            CardBehaviour card = other.GetComponent<CardBehaviour>();
+            card.ZoneEntered();
+            cardLists.Add(card);
+            CheckCards();
+        }
+
+        return;
+
         // Allow cards to flip
         other.GetComponentInParent<CardBehaviour>().flippable = true;
         // Add to score
@@ -72,6 +103,8 @@ public class ScoreZone : MonoBehaviour
     // Function to alter score based on card flip state < ------------ DO THIS PROPERLY ------------ <
     void OnTriggerStay2D(Collider2D other)
     {
+        return;
+
         // Alter score
         if (other.GetComponentInParent<CardBehaviour>().isFlipped == false && other.GetComponentInParent<CardBehaviour>().justFlipped == true)
         {
@@ -118,6 +151,16 @@ public class ScoreZone : MonoBehaviour
     // Function to add card values to total score
     void OnTriggerExit2D(Collider2D other)
     {
+        if (other.GetComponent<CardBehaviour>() != null)
+        {
+            CardBehaviour card = other.GetComponent<CardBehaviour>();
+            card.ZoneExited();
+            cardLists.Remove(card);
+            CheckCards();
+        }
+
+        return;
+
         // Disallow cards to flip
         other.GetComponentInParent<CardBehaviour>().flippable = false;
         // Subtract from score

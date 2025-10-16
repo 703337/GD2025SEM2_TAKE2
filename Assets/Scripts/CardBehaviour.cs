@@ -13,6 +13,10 @@ public class CardBehaviour : MonoBehaviour
     public bool justFlipped;
     Vector3 mousePositionOffset;
     [SerializeField] public int cardValue;
+    ScoreZone scoreZone;
+
+    bool inArea;
+
     public int GetCardValue()
     {
         if (isFlipped == false)
@@ -29,6 +33,8 @@ public class CardBehaviour : MonoBehaviour
     void Start()
     {
         GetComponent<Rigidbody2D>().AddForce(Vector2.right);
+        GameObject obj = GameObject.FindGameObjectWithTag("ScoreZone");
+        scoreZone = obj.GetComponent<ScoreZone>();
     }
 
     // Update is called once per frame
@@ -101,6 +107,18 @@ public class CardBehaviour : MonoBehaviour
                 justFlipped = true;
                 break;
         }
+
+        scoreZone.CheckCards();
+    }
+
+    public void ZoneEntered()
+    {
+        flippable = true;
+    }
+
+    public void ZoneExited()
+    {
+        flippable = false;
     }
 
     public void DestoryCard()

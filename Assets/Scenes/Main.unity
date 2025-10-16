@@ -2316,7 +2316,7 @@ GameObject:
   - component: {fileID: 1613074606}
   m_Layer: 0
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: ScoreZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2407,11 +2407,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f71501f81187754c92b478ae444cea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreBanked: 0
   gameManager: {fileID: 595629289}
   ScoreBanker: {fileID: 1648799117}
   LifeCounter: {fileID: 281997890}
   BankedScoreCounter: {fileID: 1753848188}
   ScoreCounter: {fileID: 1653258753}
+  cardLists: []
+  testAmount: 0
 --- !u!1 &1648799115
 GameObject:
   m_ObjectHideFlags: 0
